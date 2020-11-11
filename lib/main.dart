@@ -1,9 +1,73 @@
+import 'package:flutter/material.dart';
+import 'pages/documents.dart';
+import 'pages/home.dart';
+import 'pages/inductions.dart';
+import 'pages/questions.dart';
+import 'pages/quiz.dart';
+import 'pages/quizzes.dart';
+import 'pages/sites.dart';
+import 'pages/uploadphoto.dart';
+import 'pages/users.dart';
+import 'pages/login.dart';
+import 'pages/json.dart';
 import 'dart:async';
 import 'dart:convert';
-
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Site Induction Manager',
+        initialRoute: '/home',
+        routes: {
+          '/home': (context) => PageHome(),
+          '/json': (context) => PageJson(),
+          '/login': (context) => PageLogin(),
+          '/users': (context) => PageUsers(),
+          '/inductions': (context) => PageInductions(),
+          '/questions': (context) => PageQuestions(),
+          '/quiz': (context) => PageQuiz(),
+          '/quizzes': (context) => PageQuizzes(),
+          '/sites': (context) => PageSites(),
+          '/uploadphoto': (context) => PageUploadPhoto(),
+          '/documents': (context) => PageDocuments(),
+        },
+        theme: ThemeData(
+          // Define the default brightness and colors.
+          backgroundColor: Colors.grey,
+          primaryColor: Color(0xFFED2228),
+          primarySwatch: Colors.blue,
+          accentColor: Color(0xFFED2228),
+          hoverColor: Color(0xFFd3d2d3),
+          scaffoldBackgroundColor: Color(0xFFd3d2d3),
+          // cardColor: Color(0xFFA3A9d3),
+          // buttonColor: Color(0xFFA3A9d3),
+          canvasColor: Color(0xFFED2228),
+          // dialogBackgroundColor: Color(0xFFA3A9d3),
+          // secondaryHeaderColor: Color(0xFFA3A9d3),
+          dividerColor: Color(0xFFA3A9d3),
+          // selectedRowColor: Color(0xFFA3A9d3),
+          // highlightColor: Color(0xFFA3A9d3),
+          // focusColor: Color(0xFFA3A9d3),
+          fontFamily: 'Raleway',
+
+          // Define the default font family.
+
+
+          // Define the default TextTheme. Use this to specify the default
+          // text styling for headlines, titles, bodies of text, and more.
+          textTheme: TextTheme(
+            headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+            headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+            bodyText2: TextStyle(fontSize: 24.0, fontFamily: 'Hind'),
+          ),
+        ));
+  }
+}
 Future<Users> fetchUsers() async {
   final response = await http.get('http://localhost/api/users');
 
@@ -49,18 +113,18 @@ class UserSites {
 
   UserSites(
       {this.sId,
-      this.name,
-      this.role,
-      this.phone,
-      this.email,
-      this.active,
-      this.dateCreated,
-      this.picture,
-      this.licenses,
-      this.discipline,
-      this.iV,
-      this.createdBy,
-      this.id});
+        this.name,
+        this.role,
+        this.phone,
+        this.email,
+        this.active,
+        this.dateCreated,
+        this.picture,
+        this.licenses,
+        this.discipline,
+        this.iV,
+        this.createdBy,
+        this.id});
 
   factory UserSites.fromJson(Map<String, dynamic> json) {
     return UserSites(
@@ -81,73 +145,3 @@ class UserSites {
   }
 }
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatefulWidget {
-  MyApp({Key key}) : super(key: key);
-
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  Future<Users> futureUsers;
-
-  @override
-  void initState() {
-    super.initState();
-    futureUsers = fetchUsers();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Fetch Data Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Fetch Data Example'),
-        ),
-        body: Column(children: [
-          FutureBuilder<Users>(
-            future: futureUsers,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return new Column(
-                  children: [
-                    for (var i in snapshot.data.users)
-                      Container(
-                        color: Colors.white,
-                        padding: EdgeInsets.all(20.0),
-                        child: Table(
-                          border: TableBorder.all(color: Colors.black),
-                          children: [
-                            TableRow(children: [
-                              Text(i.name.toString()),
-                              Text(i.role.toString()),
-                              Text(i.email.toString()),
-                            ]),
-                            TableRow(children: [
-                              Text(i.id.toString()),
-                              Text(i.phone.toString()),
-                              Text(i.dateCreated.toString()),
-                            ])
-                          ],
-                        ),
-                      )
-                  ],
-                );
-              } else if (snapshot.hasError) {
-                return Text("${snapshot.error}");
-              }
-              // By default, show a loading spinner.
-              return CircularProgressIndicator();
-            },
-          ),
-        ]),
-      ),
-    );
-  }
-}
