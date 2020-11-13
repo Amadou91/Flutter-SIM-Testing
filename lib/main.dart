@@ -42,21 +42,21 @@ class MyApp extends StatelessWidget {
           primaryColor: Color(0xFFED2228),
           primarySwatch: Colors.blue,
           accentColor: Color(0xFFED2228),
-          hoverColor: Color(0xFFd3d2d3),
-          scaffoldBackgroundColor: Color(0xFFd3d2d3),
+          // hoverColor: Colors.white,
+          scaffoldBackgroundColor: Colors.grey,
           // cardColor: Color(0xFFA3A9d3),
           // buttonColor: Color(0xFFA3A9d3),
           canvasColor: Color(0xFFED2228),
           // dialogBackgroundColor: Color(0xFFA3A9d3),
           // secondaryHeaderColor: Color(0xFFA3A9d3),
-          dividerColor: Color(0xFFA3A9d3),
+          // dividerColor: Color(0xFFA3A9d3),
           // selectedRowColor: Color(0xFFA3A9d3),
           // highlightColor: Color(0xFFA3A9d3),
           // focusColor: Color(0xFFA3A9d3),
+
           fontFamily: 'Raleway',
 
           // Define the default font family.
-
 
           // Define the default TextTheme. Use this to specify the default
           // text styling for headlines, titles, bodies of text, and more.
@@ -68,6 +68,7 @@ class MyApp extends StatelessWidget {
         ));
   }
 }
+
 Future<Users> fetchUsers() async {
   final response = await http.get('http://localhost/api/users');
 
@@ -113,18 +114,18 @@ class UserSites {
 
   UserSites(
       {this.sId,
-        this.name,
-        this.role,
-        this.phone,
-        this.email,
-        this.active,
-        this.dateCreated,
-        this.picture,
-        this.licenses,
-        this.discipline,
-        this.iV,
-        this.createdBy,
-        this.id});
+      this.name,
+      this.role,
+      this.phone,
+      this.email,
+      this.active,
+      this.dateCreated,
+      this.picture,
+      this.licenses,
+      this.discipline,
+      this.iV,
+      this.createdBy,
+      this.id});
 
   factory UserSites.fromJson(Map<String, dynamic> json) {
     return UserSites(
@@ -144,4 +145,3 @@ class UserSites {
     );
   }
 }
-
