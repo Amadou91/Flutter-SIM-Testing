@@ -5,7 +5,6 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
         child: ListTileTheme(
-          hov,
             child: ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
