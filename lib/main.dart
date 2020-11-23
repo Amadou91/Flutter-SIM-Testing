@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Site Induction Manager',
-        initialRoute: '/home',
+        initialRoute: '/login',
         routes: {
           '/home': (context) => PageHome(),
           '/json': (context) => PageJson(),
@@ -61,9 +61,10 @@ class MyApp extends StatelessWidget {
           // Define the default TextTheme. Use this to specify the default
           // text styling for headlines, titles, bodies of text, and more.
           textTheme: TextTheme(
-            headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-            headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-            bodyText2: TextStyle(fontSize: 24.0, fontFamily: 'Hind'),
+
+            headline1: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            headline6: TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
+            bodyText2: TextStyle(fontSize: 10, fontFamily: 'Hind'),
           ),
         ));
   }

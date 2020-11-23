@@ -10,7 +10,7 @@ class PageUsers extends StatelessWidget {
       appBar: AppBar(
         title: Text("Users"),
       ),
-      body: Padding(padding: EdgeInsets.all(50), child: Center(child: (UserTable()))),
+      body: Padding(padding: EdgeInsets.all(5), child: Center(child: (UserTable()))),
       bottomNavigationBar: MyFooter(),
     );
   }

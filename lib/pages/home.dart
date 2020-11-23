@@ -9,7 +9,15 @@ class PageHome extends StatelessWidget {
       appBar: AppBar(
         title: Text("Home"),
       ),
-      body: Padding(padding: EdgeInsets.all(50), child: Center(child: (Text("Home")))),
+      body: Padding(
+          padding: EdgeInsets.all(50),
+          child: Center(
+              child: (Text("John Orban's Dashboard",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Color(0xFFd3d2d3),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 50))))),
       bottomNavigationBar: MyFooter(),
     );
   }

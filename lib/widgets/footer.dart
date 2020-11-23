@@ -22,15 +22,15 @@ class MyFooter extends StatelessWidget {
                   Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                     Row(children: [
                       Text('Engineering Documentation Ltd',
-                          style: TextStyle(fontSize: 12), textAlign: TextAlign.left),
+                          style: TextStyle(fontSize: 14), textAlign: TextAlign.left),
                     ]),
                     Row(children: [
                       Text('Stamullen, Co. Meath, Ireland 1st Floor, Westward Town Centre,',
-                          style: TextStyle(fontSize: 12), textAlign: TextAlign.left),
+                          style: TextStyle(fontSize: 14), textAlign: TextAlign.left),
                     ]),
                     Row(children: [
                       Text('+353 71 9141564 | info@engdoc.ie | www.engdoc.ie',
-                          style: TextStyle(fontSize: 12), textAlign: TextAlign.left),
+                          style: TextStyle(fontSize: 14), textAlign: TextAlign.left),
                     ]),
                   ]),
                 ]))));

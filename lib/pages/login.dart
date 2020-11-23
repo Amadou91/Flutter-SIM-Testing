@@ -12,7 +12,7 @@ class PageLogin extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 100),
           child: TextField(
-            cursorColor: Colors.blueGrey,
+            cursorColor: Color(0xFFED2228),
             controller: username,
             // decoration: InputDecoration(
             //   enabledBorder: UnderlineInputBorder(
@@ -37,7 +37,7 @@ class PageLogin extends StatelessWidget {
               if (username.text == "Bryan" ||
                   username.text == "John" ||
                   username.text == "") {
-                Navigator.pushReplacementNamed(context, '/');
+                Navigator.pushReplacementNamed(context, '/home');
               } else {
                 return showDialog(
                   context: context,
