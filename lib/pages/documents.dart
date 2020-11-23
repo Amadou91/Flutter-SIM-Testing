@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sim/widgets/footer.dart';
 import 'package:sim/widgets/navbar.dart';
+import 'package:sim/widgets/user_table.dart';
 
 class PageDocuments extends StatelessWidget {
   @override
@@ -10,6 +11,7 @@ class PageDocuments extends StatelessWidget {
       appBar: AppBar(
         title: Text("Documents"),
       ),
+      body: Padding(padding: EdgeInsets.all(5), child: Center(child: (UserTable()))),
       bottomNavigationBar: MyFooter(),
 
     );
