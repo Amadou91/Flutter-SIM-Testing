@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           '/users': (context) => PageUsers(),
           '/inductions': (context) => PageInductions(),
           '/questions': (context) => PageQuestions(),
-          '/quiz': (context) => PageQuiz(),
+          '/quiz': (context) => QuizApp(),
           '/quizzes': (context) => PageQuizzes(),
           '/sites': (context) => PageSites(),
           '/uploadphoto': (context) => PageUploadPhoto(),

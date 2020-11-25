@@ -5,6 +5,7 @@ import 'package:sim/widgets/user_table.dart';
 
 class PageQuizzes extends StatelessWidget {
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: MyDrawer(),

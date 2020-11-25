@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sim/widgets/footer.dart';
 import 'package:sim/widgets/navbar.dart';
-import 'package:sim/widgets/user_table.dart';
+import 'package:sim/widgets/site_table.dart';
 
 class PageSites extends StatelessWidget {
   @override
@@ -11,7 +11,7 @@ class PageSites extends StatelessWidget {
       appBar: AppBar(
         title: Text("Sites"),
       ),
-      body: Padding(padding: EdgeInsets.all(5), child: Center(child: (UserTable()))),
+      body: Padding(padding: EdgeInsets.all(5), child: Center(child: (SiteTable()))),
       bottomNavigationBar: MyFooter(),
 
     );
