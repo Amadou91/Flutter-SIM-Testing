@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:async';
-import 'auth2.dart';
+import 'token.dart';
 
 Future<Sites> fetchSites() async {
 final response =

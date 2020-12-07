@@ -11,20 +11,21 @@ Map<String, String> requestHeaders = {
 //   'email':'johnborban@gmail.com',
 //   'password':'induction',
 // };
-final body = """{"email":"johnborban@gmail.com","password":"induction"}""";
+//final body = """{"email":"johnborban@gmail.com","password":"induction"}""";
 
-Future<Login> fetchLogin() async {
-print(body);
+Future<Login> fetchLogin(username, password) async {
+  final body = """{"email":""" + '"' + username.toString()+ '"'  + "," +'"'  + """password":""" + '"' + password.toString()+ '"' + "}";
+  print(body);
   final response = await http.post('http://localhost/api/users/login',
-      body: body, headers:requestHeaders);
+      body: body, headers: requestHeaders);
 
   if (response.statusCode == 200) {
-    print("Logged In");
+
     return Login.fromJson(jsonDecode(response.body.toString()));
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
-    throw Exception('Failed to load');
+    throw Exception('Failed to loa  d');
   }
 }
 
