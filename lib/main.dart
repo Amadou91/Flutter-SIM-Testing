@@ -8,7 +8,7 @@ import 'pages/quizzes.dart';
 import 'pages/sites.dart';
 import 'pages/uploadphoto.dart';
 import 'pages/users.dart';
-import 'pages/login.dart';
+import 'pages/auth.dart';
 import 'pages/json.dart';
 import 'dart:async';
 import 'dart:convert';

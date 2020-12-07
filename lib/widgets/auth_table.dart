@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../data/users.dart';
+import 'package:sim/data/login.dart';
 
-class UserTable extends StatelessWidget {
+class AuthTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      FutureBuilder<Users>(
-        future: fetchUsers(),
+      FutureBuilder<Login>(
+        future: fetchLogin(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return new Column(
@@ -17,22 +17,22 @@ class UserTable extends StatelessWidget {
                         border: TableBorder.all(color: Colors.black),
                         children: [
                           TableRow(children: [
-                            Text("User Name",
+                            Text("Site Name",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.bold)),
-                            Text("Phone",
+                            Text("Job Number",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.bold)),
-                            Text("Email",
+                            Text("Date Created",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.bold)),
-                            Text("Role",
+                            Text("Active",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.bold)),
+                                    fontSize: 12, fontWeight: FontWeight.bold))
                           ])
                         ])),
                 Container(
@@ -42,10 +42,9 @@ class UserTable extends StatelessWidget {
                         Text("", textAlign: TextAlign.center),
                         Text("", textAlign: TextAlign.center),
                         Text("", textAlign: TextAlign.center),
-                        Text("", textAlign: TextAlign.center),
+                        Text("", textAlign: TextAlign.center)
                       ])
                     ])),
-                for (var i in snapshot.data.users)
                   Container(
                     color: Color(0xFFd3d2d3),
                     //padding: EdgeInsets.all(20.0),
@@ -54,19 +53,19 @@ class UserTable extends StatelessWidget {
                           inside: BorderSide.none, outside: BorderSide.none),
                       children: [
                         TableRow(children: [
-                          Text(i.name,
+                          Text(snapshot.data.email,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.bold)),
-                          Text(i.phone.toString(),
+                          Text(snapshot.data.email,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.bold)),
-                          Text(i.email.toString(),
+                          Text(snapshot.data.email,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.bold)),
-                          Text(i.role.toString(),
+                          Text(snapshot.data.email,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.bold)),
@@ -75,7 +74,7 @@ class UserTable extends StatelessWidget {
                           Text(""),
                           Text(""),
                           Text(""),
-                          Text(""),
+                          Text("")
                         ]),
                         //TableRow(children: [
                         // Text(i.id.toString()),

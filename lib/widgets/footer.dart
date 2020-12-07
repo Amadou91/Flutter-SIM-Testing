@@ -5,7 +5,7 @@ class MyFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: 100,
-        color: Color(0xFFd3d2d3),
+        color: Colors.white,
         child: Padding(
             padding: EdgeInsets.all(10),
             child: FittedBox(
