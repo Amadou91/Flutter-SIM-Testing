@@ -7,14 +7,19 @@ Map<String, String> requestHeaders = {
   'Host': 'localhost',
   'Accept-Encoding': 'gzip, deflate, br'
 };
-// Map<String, String> body = {
-//   'email':'johnborban@gmail.com',
-//   'password':'induction',
-// };
-//final body = """{"email":"johnborban@gmail.com","password":"induction"}""";
 
 Future<Login> fetchLogin(username, password) async {
-  final body = """{"email":""" + '"' + username.toString()+ '"'  + "," +'"'  + """password":""" + '"' + password.toString()+ '"' + "}";
+  final body = """{"email":""" +
+      '"' +
+      username.toString() +
+      '"' +
+      "," +
+      '"' +
+      """password":""" +
+      '"' +
+      password.toString() +
+      '"' +
+      "}";
   print(body);
   final response = await http.post('http://localhost/api/users/login',
       body: body, headers: requestHeaders);
@@ -25,7 +30,7 @@ Future<Login> fetchLogin(username, password) async {
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
-    throw Exception('Failed to loa  d');
+    throw Exception('Failed to load');
   }
 }
 

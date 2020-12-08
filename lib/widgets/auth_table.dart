@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sim/data/login.dart';
+import '../pages/login.dart';
 
 class AuthTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
       FutureBuilder<Login>(
+        future: fetchLogin(username, password),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return new Column(
@@ -16,19 +17,19 @@ class AuthTable extends StatelessWidget {
                         border: TableBorder.all(color: Colors.black),
                         children: [
                           TableRow(children: [
-                            Text("Site Name",
+                            Text("Email",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.bold)),
-                            Text("Job Number",
+                            Text("Token",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.bold)),
-                            Text("Date Created",
+                            Text("uName",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.bold)),
-                            Text("Active",
+                            Text("UserID",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.bold))
@@ -56,15 +57,15 @@ class AuthTable extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.bold)),
-                          Text(snapshot.data.email,
+                          Text(snapshot.data.token,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.bold)),
-                          Text(snapshot.data.email,
+                          Text(snapshot.data.uname,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.bold)),
-                          Text(snapshot.data.email,
+                          Text(snapshot.data.userId,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.bold)),

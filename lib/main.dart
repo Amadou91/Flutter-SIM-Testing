@@ -8,7 +8,7 @@ import 'pages/quizzes.dart';
 import 'pages/sites.dart';
 import 'pages/uploadphoto.dart';
 import 'pages/users.dart';
-import 'pages/auth.dart';
+import 'pages/login.dart';
 import 'pages/json.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Site Induction Manager',
-        initialRoute: '/login',
+        initialRoute: '/users',
         routes: {
           '/home': (context) => PageHome(),
           '/json': (context) => PageJson(),

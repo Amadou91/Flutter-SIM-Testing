@@ -1,3 +1,3 @@
-import "../data/login.dart";
+import "../data/auth.dart";
 
-var authToken = ut;
+var authToken = {"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmM5MDVlNjM2OWZhNDAwMWZlOTJhMTMiLCJyb2xlIjoic3VwZXJhZG1pbiIsImVtYWlsIjoiam9obmJvcmJhbkBnbWFpbC5jb20iLCJ1bmFtZSI6IkpvaG4gT3JiYW4iLCJpYXQiOjE2MDcwOTc0MzcsImV4cCI6MTYwNzEwMTAzN30.Cn7pXZbizleahPvk6Gzuj6spEyMRsUM3fZ9XJegY8BM"};
