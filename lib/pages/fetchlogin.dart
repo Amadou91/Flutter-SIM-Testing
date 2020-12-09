@@ -1,8 +1,6 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:sim/widgets/auth_table.dart';
-import '../data/rest_ds.dart';
+import 'package:sim/models/user.dart';
 import 'login.dart';
 
 

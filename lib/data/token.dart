@@ -1,3 +1,1 @@
-
-
-var authToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmM5MDVlNjM2OWZhNDAwMWZlOTJhMTMiLCJyb2xlIjoic3VwZXJhZG1pbiIsImVtYWlsIjoiam9obmJvcmJhbkBnbWFpbC5jb20iLCJ1bmFtZSI6IkpvaG4gT3JiYW4iLCJpYXQiOjE2MDc1MzIwODAsImV4cCI6MTYwNzUzNTY4MH0.b_q8QWRSiXMSki830i-dJ9VWFHnQog-ktEkVJnVFQbo";
+var authToken = "";

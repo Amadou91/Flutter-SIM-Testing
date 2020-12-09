@@ -1,21 +1,35 @@
-class User {
-  String _username;
-  String _password;
-  User(this._username, this._password);
+import 'dart:convert';
 
-  User.map(dynamic obj) {
-    this._username = obj["username"];
-    this._password = obj["password"];
-  }
+Login loginFromJson(String str) => Login.fromJson(json.decode(str));
+String loginToJson(Login data) => json.encode(data.toJson());
+class Login {
+  Login({
+    this.userId,
+    this.role,
+    this.email,
+    this.token,
+    this.uname,
+  });
 
-  String get username => _username;
-  String get password => _password;
+  String userId;
+  String role;
+  String email;
+  String token;
+  String uname;
 
-  Map<String, dynamic> toMap() {
-    var map = new Map<String, dynamic>();
-    map["username"] = _username;
-    map["password"] = _password;
+  factory Login.fromJson(Map<String, dynamic> json) => Login(
+    userId: json["userId"],
+    role: json["role"],
+    email: json["email"],
+    token: json["token"],
+    uname: json["uname"],
+  );
 
-    return map;
-  }
+  Map<String, dynamic> toJson() => {
+    "userId": userId,
+    "role": role,
+    "email": email,
+    "token": token,
+    "uname": uname,
+  };
 }

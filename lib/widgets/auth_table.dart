@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sim/pages/login.dart';
-//import '../data/auth.dart';
+import 'package:sim/models/user.dart';
+
 
 class AuthTable extends StatelessWidget {
   @override
