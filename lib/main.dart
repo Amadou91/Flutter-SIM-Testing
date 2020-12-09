@@ -10,9 +10,6 @@ import 'pages/uploadphoto.dart';
 import 'pages/users.dart';
 import 'pages/login.dart';
 import 'pages/json.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 void main() => runApp(MyApp());
 
@@ -22,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Site Induction Manager',
-        initialRoute: '/users',
+        initialRoute: '/login',
         routes: {
           '/home': (context) => PageHome(),
           '/json': (context) => PageJson(),
@@ -70,79 +67,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-Future<Users> fetchUsers() async {
-  final response = await http.get('http://localhost/api/users');
-
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    return Users.fromJson(jsonDecode(response.body.toString()));
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load');
-  }
-}
-
-class Users {
-  final List<UserSites> users;
-
-  Users({this.users});
-
-  factory Users.fromJson(Map<String, dynamic> parsedJson) {
-    var list = parsedJson['users'] as List;
-    print(list);
-    List<UserSites> usersList = list.map((i) => UserSites.fromJson(i)).toList();
-
-    return Users(users: usersList);
-  }
-}
-
-class UserSites {
-  String sId;
-  String name;
-  String role;
-  String phone;
-  String email;
-  bool active;
-  String dateCreated;
-  String picture;
-  int licenses;
-  String discipline;
-  int iV;
-  String createdBy;
-  String id;
-
-  UserSites(
-      {this.sId,
-      this.name,
-      this.role,
-      this.phone,
-      this.email,
-      this.active,
-      this.dateCreated,
-      this.picture,
-      this.licenses,
-      this.discipline,
-      this.iV,
-      this.createdBy,
-      this.id});
-
-  factory UserSites.fromJson(Map<String, dynamic> json) {
-    return UserSites(
-      sId: json['_id'],
-      name: json['name'],
-      role: json['role'],
-      phone: json['phone'],
-      email: json['email'],
-      active: json['active'],
-      dateCreated: json['dateCreated'],
-      picture: json['picture'],
-      licenses: json['licenses'],
-      discipline: json['discipline'],
-      iV: json['__v'],
-      createdBy: json['createdBy'],
-      id: json['id'],
-    );
-  }
-}

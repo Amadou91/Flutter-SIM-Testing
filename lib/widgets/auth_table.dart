@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import '../data/auth.dart';
+import 'package:sim/pages/login.dart';
+//import '../data/auth.dart';
 
 class AuthTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
       FutureBuilder<Login>(
-        future: fetchLogin("johnborban@gmail.com","induction"),
+        //future: fetchLogin("johnborban@gmail.com","induction"),
+        future: fetchLogin(PageLogin().username.text.toString(),PageLogin().password.text.toString()),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return new Column(

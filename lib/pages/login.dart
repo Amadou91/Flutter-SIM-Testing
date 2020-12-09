@@ -1,9 +1,39 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:sim/data/auth.dart';
 import 'package:sim/widgets/auth_table.dart';
+
+Map<String, String> requestHeaders = {
+  'Content-type': 'application/json',
+  'Accept': '*/*',
+  'Host': 'localhost',
+  'Accept-Encoding': 'gzip, deflate, br'
+};
+Future<Login> fetchLogin(username, password) async {
+  print("here");
+  final body = """{"email":""" +
+      '"' +
+      username.toString() +
+      '"' +
+      "," +
+      '"' +
+      """password":""" +
+      '"' +
+      password.toString() +
+      '"' +
+      "}";
+  print(body);
+  final response = await http.post('http://localhost/api/users/login',
+      body: body, headers: requestHeaders);
+
+  if (response.statusCode == 200) {
+    return Login.fromJson(jsonDecode(response.body.toString()));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Wrong Credentials');
+  }
+}
 
 class PageLogin extends StatelessWidget {
   final username = TextEditingController();
@@ -33,29 +63,7 @@ class PageLogin extends StatelessWidget {
         // When the button is pressed,
         // give focus to the text field using myFocusNode.
         onPressed: () async {
-          final body = """{"email":""" +
-              '"' +
-              username.text.toString() +
-              '"' +
-              "," +
-              '"' +
-              """password":""" +
-              '"' +
-              password.text.toString() +
-              '"' +
-              "}";
-          print(body);
-          final response = await http.post('http://localhost/api/users/login',
-              body: body, headers: requestHeaders);
-
-          if (response.statusCode == 200) {
-
-            return Login.fromJson(jsonDecode(response.body.toString()));
-          } else {
-            // If the server did not return a 200 OK response,
-            // then throw an exception.
-            throw Exception('Failed to load');
-          }
+          fetchLogin(username.text, password.text);
         },
         tooltip: 'Focus Second Text Field',
         child: Icon(Icons.edit),
