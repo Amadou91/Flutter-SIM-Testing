@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:sim/widgets/quiz_questions.dart';
 
 // this imports a file containing the quiz questions class
-import 'quiz.dart';
-
 // this imports an external package to display svg images in our app
 
 // the main function returns our QuizApp() class and displays in as our entire app

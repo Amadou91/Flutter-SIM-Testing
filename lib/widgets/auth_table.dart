@@ -7,8 +7,8 @@ class AuthTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       FutureBuilder<Login>(
-        //future: fetchLogin("johnborban@gmail.com","induction"),
-        future: fetchLogin(PageLogin().username.text.toString(),PageLogin().password.text.toString()),
+       // future: fetchLogin("johnborban@gmail.com","induction"),
+       // future: fetchLogin(LoginScreen().username.text.toString(),LoginScreen().password.text.toString()),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return new Column(

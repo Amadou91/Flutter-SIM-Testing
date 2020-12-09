@@ -2,42 +2,58 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:sim/widgets/auth_table.dart';
+import '../data/rest_ds.dart';
+import 'fetchlogin.dart';
 
-Map<String, String> requestHeaders = {
-  'Content-type': 'application/json',
-  'Accept': '*/*',
-  'Host': 'localhost',
-  'Accept-Encoding': 'gzip, deflate, br'
-};
-Future<Login> fetchLogin(username, password) async {
-  print("here");
-  final body = """{"email":""" +
-      '"' +
-      username.toString() +
-      '"' +
-      "," +
-      '"' +
-      """password":""" +
-      '"' +
-      password.toString() +
-      '"' +
-      "}";
-  print(body);
-  final response = await http.post('http://localhost/api/users/login',
-      body: body, headers: requestHeaders);
+var x = 0;
 
-  if (response.statusCode == 200) {
-    return Login.fromJson(jsonDecode(response.body.toString()));
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Wrong Credentials');
+class LoginScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // if (x == 1) {
+    print("Correct");
+
+    //Navigator.pushNamed(context, "/login");
+    return new LoginScreenState();
+    //} else {
+    //  print("Incorrect");
+    //   return new LoginScreenState();
   }
 }
+final username = TextEditingController();
+final password = TextEditingController();
+//}
+// Future<Login> fetchLogin(username, password) async {
+//   Map<String, String> requestHeaders = {
+//     'Content-type': 'application/json',
+//     'Accept': '*/*',
+//   };
+//   // Map<String, String> body = {
+//   //   '"email"': '"johnborban@gmail.com"',
+//   //   '"password"': '"induction"',
+//   // };
+//   Map<String, String> body = {
+//     '"email"': '"' + username + '"',
+//     '"password"': '"' + password + '"',
+//   };
+//   print(body);
+//
+//   final response = await http.post('http://localhost/api/users/login',
+//       body: body.toString(), headers: requestHeaders);
+//
+//   if (response.statusCode == 200) {
+//     x = 0;
+//
+//     return Login.fromJson(jsonDecode(response.body.toString()));
+//   } else {
+//     x = 0;
+//     // If the server did not return a 200 OK response,
+//     // then throw an exception.
+//     throw Exception('Wrong Credentials');
+//   }
+// }
+class LoginScreenState extends State<LoginScreen> {
 
-class PageLogin extends StatelessWidget {
-  final username = TextEditingController();
-  final password = TextEditingController();
   // Define the focus node. To manage the lifecycle, create the FocusNode in
   // the initState method, and clean it up in the dispose method.
   @override
@@ -50,20 +66,108 @@ class PageLogin extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // The first text field is focused on as soon as the app starts.
             TextField(autofocus: true, controller: username),
-            // The second text field is focused on when a user taps the
-            // FloatingActionButton.
             TextField(controller: password),
-            Center(child: (AuthTable()))
+            FutureBuilder<Login>(
+              future: fetchLogin(),
+              //future: fetchLogin(username.text.toString(),password.text.toString()),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return new Column(
+                    children: [
+                      Container(
+                          color: Color(0xFFd3d2d3),
+                          child: Table(
+                              border: TableBorder.all(color: Colors.black),
+                              children: [
+                                TableRow(children: [
+                                  Text("Email",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold)),
+                                  Text("Token",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold)),
+                                  Text("uName",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold)),
+                                  Text("UserID",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold))
+                                ])
+                              ])),
+                      Container(
+                          color: Color(0xFFd3d2d3),
+                          child: Table(children: [
+                            TableRow(children: [
+                              Text("", textAlign: TextAlign.center),
+                              Text("", textAlign: TextAlign.center),
+                              Text("", textAlign: TextAlign.center),
+                              Text("", textAlign: TextAlign.center)
+                            ])
+                          ])),
+                      Container(
+                        color: Color(0xFFd3d2d3),
+                        //padding: EdgeInsets.all(20.0),
+                        child: Table(
+                          border: TableBorder.symmetric(
+                              inside: BorderSide.none,
+                              outside: BorderSide.none),
+                          children: [
+                            TableRow(children: [
+                              Text(snapshot.data.email,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold)),
+                              Text(snapshot.data.token,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold)),
+                              Text(snapshot.data.uname,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold)),
+                              Text(snapshot.data.userId,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold)),
+                            ]),
+                            TableRow(children: [
+                              Text(""),
+                              Text(""),
+                              Text(""),
+                              Text("")
+                            ]),
+                          ],
+                        ),
+                      )
+                    ],
+                  );
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+                // By default, show a loading spinner.
+                return CircularProgressIndicator();
+              },
+            )
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        // When the button is pressed,
-        // give focus to the text field using myFocusNode.
-        onPressed: () async {
-          fetchLogin(username.text, password.text);
+        onPressed: () {
+          //fetchLogin(username.text.toString(),password.text.toString());
+          Navigator.pushNamed(context, '/login');
         },
         tooltip: 'Focus Second Text Field',
         child: Icon(Icons.edit),
@@ -74,7 +178,6 @@ class PageLogin extends StatelessWidget {
 }
 
 Login loginFromJson(String str) => Login.fromJson(json.decode(str));
-
 String loginToJson(Login data) => json.encode(data.toJson());
 
 class Login {
