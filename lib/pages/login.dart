@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sim/data/token.dart';
 import 'package:sim/widgets/login_table.dart';
 
-var x = 0;
+var loggedIn = 0;
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -28,7 +28,7 @@ class LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Text Field Focus'),
+        title: Text('User Login'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -42,7 +42,7 @@ class LoginScreenState extends State<LoginScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          if (x == 0) {
+          if (loggedIn == 0) {
             Navigator.pushNamed(context, '/login');
           } else {
             Navigator.pushNamed(context, '/home');

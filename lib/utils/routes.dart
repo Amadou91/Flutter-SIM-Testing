@@ -4,7 +4,7 @@ import 'package:sim/pages/questions.dart';
 import 'package:sim/pages/quiz.dart';
 import 'package:sim/pages/quizzes.dart';
 import 'package:sim/pages/sites.dart';
-import 'package:sim/pages/uploadphoto.dart';
+import 'package:sim/pages/add_license.dart';
 import 'package:sim/pages/users.dart';
 import '../pages/home.dart';
 import '../pages/login.dart';

@@ -15,7 +15,7 @@ Future<Users> fetchUsers() async {
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
-    throw Exception('Failed to load');
+    throw Exception('You are not authorized to view this page');
   }
 }
 

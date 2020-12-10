@@ -24,7 +24,7 @@ Future<Login> fetchLogin() async {
       body: body.toString(), headers: requestHeaders);
 
   if (response.statusCode == 200) {
-    x = 1;
+    loggedIn = 1;
 
     return Login.fromJson(jsonDecode(response.body.toString()));
   } else {
