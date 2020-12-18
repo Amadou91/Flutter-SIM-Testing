@@ -30,28 +30,44 @@ class LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         title: Text('User Login'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(autofocus: true, controller: username),
-            TextField(controller: password),
-            loginTable()
-          ],
-        ),
-      ),
+      body: Container(
+          padding: EdgeInsets.all(100),
+          child: Center(
+              child: Container(
+                  width: 500,
+                  padding: EdgeInsets.all(25),
+                  color: Colors.white,
+                  child: Column(children: [
+                    Text("Username:"),
+                    TextField(
+                        controller: username,
+                        decoration: InputDecoration(
+                            enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFF777777)),
+                        ))),
+                    Text("\n" + "Password:"),
+                    TextField(
+
+                        controller: password,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFF777777)),
+                        ))),
+                    loginTable(),
+                  ])))),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if (loggedIn == 0) {
-            Navigator.pushNamed(context, '/login');
+            Navigator.pushReplacementNamed(context, '/login');
           } else {
-            Navigator.pushNamed(context, '/home');
+            Navigator.pushReplacementNamed(context, '/dashboard');
             print("Logged in");
             print("Token :" + authToken);
           }
         },
         tooltip: 'Focus Second Text Field',
-        child: Icon(Icons.edit),
+        child: Icon(Icons.login),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
     );

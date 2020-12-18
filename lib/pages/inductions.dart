@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sim/widgets/footer.dart';
+import 'package:sim/widgets/induction_table.dart';
 import 'package:sim/widgets/navbar.dart';
-import 'package:sim/widgets/user_table.dart';
+
 
 class PageInductions extends StatelessWidget {
   @override
@@ -11,7 +12,7 @@ class PageInductions extends StatelessWidget {
       appBar: AppBar(
         title: Text("Inductions"),
       ),
-      body: Padding(padding: EdgeInsets.all(5), child: Center(child: (UserTable()))),
+      body: Padding(padding: EdgeInsets.all(5), child: Center(child: (InductTable()))),
       bottomNavigationBar: MyFooter(),
 
     );

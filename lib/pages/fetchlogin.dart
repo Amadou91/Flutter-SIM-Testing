@@ -3,8 +3,6 @@ import 'package:http/http.dart' as http;
 import 'package:sim/models/user.dart';
 import 'login.dart';
 
-
-
 Future<Login> fetchLogin() async {
   Map<String, String> requestHeaders = {
     'Content-type': 'application/json',
@@ -28,9 +26,14 @@ Future<Login> fetchLogin() async {
 
     return Login.fromJson(jsonDecode(response.body.toString()));
   } else {
-
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Wrong Credentials');
+    if (username.text.toString() == "") {
+      throw ("\n" + 'Please Log In');
+    } else if (password.text.toString() == ""){
+      throw ("\n" + 'Please Log In');
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw ("\n" +'Wrong Credentials');
+    }
   }
 }

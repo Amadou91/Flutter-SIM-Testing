@@ -14,7 +14,7 @@ class MyFooter extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                   Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Image(image: AssetImage('assets/images/engdoc-logo-1.png')),
+                    Image(image: AssetImage('assets/images/engdoc-logo-footer.png')),
                   ]),
                   Column(
                       mainAxisAlignment: MainAxisAlignment.center,

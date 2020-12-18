@@ -1,12 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'dart:async';
-import 'token.dart';
+import 'package:sim/data/token.dart';
+
 
 Future<Sites> fetchSites() async {
-final response =
-      await http.get('http://localhost/api/sites',
-        headers: {"Authorization": authToken.toString()});
+  final response = await http.get('http://localhost/api/sites/find',
+      headers: {"Authorization": authToken.toString()});
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
